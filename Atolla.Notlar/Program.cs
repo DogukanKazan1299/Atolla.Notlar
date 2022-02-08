@@ -20,6 +20,7 @@ foreach (int n in query)
 
 #endregion
 
+#region 
 
 //Peki aynı sorguyu aşağıdaki gibi List<T> ile yapılsa idi, sonuc ne olurdu?
 //“List<T>()” sorguları hemen işletildiği için, sorgu sonucu listenin silinmesinden etkilenmez ve sonuçlar gelirdi.
@@ -34,10 +35,10 @@ foreach (int n in timesTen)
 }
 
 //ÇIKTI : List : 10 | 20
+#endregion
 
 
-
-
+#region
 //Son olarak, aşağıdaki sorgunun sonucu ne olurdu?
 //IEnumerable, gerçekten çağrıldıktan sonra çalıştırıldığı için, sorguya sonradan müdahale edilebilmiş ve “factor” katsayısının ilk hali ile değil, son hali ile ilgili sorgu çağrılmıştır.
 
@@ -54,6 +55,9 @@ foreach (int n in query1)
 
 //ÇIKTI : IEnumerable : 20 | 40
 
+#endregion
+
+#region
 
 //Aşağıda görüldüğü gibi Linq ile “where” koşulları peş peşe eklenerek ilgili sorgu çağrılabilir. Amaç cümle içinden “a,t,u,l,e” harflerinin çıkarılmasıdır.
 IEnumerable<char> query2 = "Cut the night with the light";
@@ -71,8 +75,9 @@ foreach (char c in query2)
 
 //ÇIKTI : C h nigh wih h igh
 
+#endregion
 
-
+#region
 //Eğer aşağıdaki gibi bir sorgu yazılır ise de, yine aynı sonuç alınır. “Where”‘ler peş peşe sona eklenir. Ve ilgili query en son çalıştırılarak, yine aynı sonuç alınır.
 //Not: ” query = query.Where( c => c != excepts[i] ) ”
 //  Şeklinde kod yazılsa idi, “i” değeri son olarak “5” değerini alacağı ve query enson foreach anında çağrılacağı için, “IndexOutOfRangeException” hatası alınacakdı.
@@ -91,10 +96,11 @@ foreach (char c in query3)
 
 //ÇIKTI : Cut the night with the light
 
+#endregion
 
 
 
-//2-Anonymous Types ve “into” Keyword
+#region 2-Anonymous Types ve “into” Keyword
 
 //Aşağıdaki örnekde görüldüğü gibi,
 //“names” dizisi üzerinde “select new{ }” ile anonymous tipinde “Original” ve “Change” propertylerine sahip bir Liste üzerinde işlem yapılarak,
@@ -123,9 +129,9 @@ foreach (string c in query4)
 //ÇIKTI : Engin Burak Selçuk
 
 
+#endregion
 
-
-
+#region
 
 //4-LET KEYWORD
 
@@ -145,10 +151,10 @@ foreach (string name in query5)
 
 //ÇIKTI : Harry Mary
 
+#endregion
 
 
-
-//5-Indexed Filtering
+# region 5-Indexed Filtering
 
 //Aşağıda görüldüğü gibi, satır index’i where koşulunda “i” ile çekilmiştir. Çift olan satırlar ( i % 2 ==0) çekilip, tek satırlar filitrelenmiştir.
 
@@ -159,10 +165,10 @@ foreach (string c in query6)
 
 //ÇIKTI : Bora Selçuk Veli
 
+#endregion
 
 
-
-//6-SelectMany
+# region 6-SelectMany
 
 //Aşağıdaki örnekde, bir dizi elemanı kendisi ile cross match olmaktadır. Aynı Ad ve Soyad, iki kere match olmasın diye, “n != n2” koşulu konulmuştur.
 
@@ -178,9 +184,10 @@ foreach (string name in query7)
 }
 
 //ÇIKTI : Bora vs Judy   Bora vs Bill   Judy vs Bora   Judy vs Bill   Bill vs Bora   Bill vs Judy
+#endregion
 
 
-
+#region
 //Aşağıdaki örnekde, aslında iç içe 2 döngü bulunmaktadır.
 //Öncelikle tam isim listesi çekilir.
 //Sonra SelectMany => ile Cross Match yapılmaktadır.
@@ -202,10 +209,10 @@ foreach (string name in query8)
 
 
 //ÇIKTI : Anne : Anne Williams'den geliyor    John : John Fred'den geliyor    Sue: Sue Green'den geliyor
+#endregion
 
 
-
-//7-) GroupBy Count
+#region 7-) GroupBy Count
 //Aşağıdaki örnekde, aynı olan hayvan sayısına göre bir gruplama yapılmış ve tekrar eden hayvan sayısına göre,  büyükten küçüğe doğru sıralanmıştır.
 //Ekran çıktısı olarak, hayvan adı ve toplam tekrarlama sayısı yazılmıştır.
 
@@ -217,3 +224,5 @@ foreach (var animal in query9)
 }
 
 //ÇIKTI : Dogs : 3   Cats : 2
+
+#endregion
